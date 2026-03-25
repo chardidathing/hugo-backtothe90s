@@ -1,23 +1,14 @@
 {{ define "main" }}
+  <h2 class="section-heading">Latest posts</h2>
   <div class="post-list">
     {{ $posts := where .Site.RegularPages "Section" "posts" }}
-    {{ range $posts.ByDate.Reverse }}
-      <article class="post-card">
-        <a href="{{ .RelPermalink }}">
-          <h2 class="post-card-title">{{ .Title }}</h2>
-        </a>
-        <div class="post-card-meta">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
-          {{ with .Params.categories }}
-            {{ range . }}<span class="post-card-category">{{ . }}</span>{{ end }}
-          {{ end }}
-        </div>
-        {{ with .Description }}
-          <p class="post-card-desc">{{ . }}</p>
-        {{ else }}
-          <p class="post-card-desc">{{ .Summary | plainify | truncate 150 }}</p>
-        {{ end }}
-      </article>
+    {{ range first 4 $posts.ByDate.Reverse }}
+      {{ partial "post-card.html" . }}
     {{ end }}
   </div>
+  {{ if gt (len (where .Site.RegularPages "Section" "posts")) 4 }}
+    <div class="see-all">
+      <a href="/posts/">See all posts &raquo;</a>
+    </div>
+  {{ end }}
 {{ end }}

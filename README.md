@@ -1,4 +1,4 @@
-# hugo-web90s-diary
+# hugo-backtothe90s
 
 A retro "90s" blog theme for Hugo, idunno what else to really put here :P
 
@@ -9,7 +9,7 @@ A retro "90s" blog theme for Hugo, idunno what else to really put here :P
 Add the theme to your site:
 
 ```bash
-git submodule add https://github.com/chardidathing/hugo-web90s-diary themes/hugo-web90s-diary
+git submodule add https://github.com/chardidathing/hugo-backtothe90s themes/hugo-backtothe90s
 ```
 
 Here's a full `hugo.toml` to get you going:
@@ -18,7 +18,7 @@ Here's a full `hugo.toml` to get you going:
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My Site'
-theme = "hugo-web90s-diary"
+theme = "hugo-backtothe90s"
 
 [params]
   subtitle = "a cool subtitle"
@@ -175,7 +175,7 @@ The 98 Dark theme gets [flying toasters](https://github.com/bryanbraun/after-dar
 
 ## Thankyou
 
-- [mimoex](https://github.com/mimoex/hugo-web90s-diary) for creating a really neat theme as my base!
+- [mimoex](https://github.com/mimoex/hugo-backtothe90s) for creating a really neat theme as my base!
 - [jdan](https://github.com/jdan/98.css) for 98.css
 - [Bryan Braun](https://github.com/bryanbraun/after-dark-css) for the flying toasters
 - [adryd325](https://github.com/adryd325/oneko.js) for oneko.js

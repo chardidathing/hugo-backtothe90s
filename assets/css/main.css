@@ -558,6 +558,35 @@ iframe {
   margin-left: auto;
 }
 
+/* === Section Heading & See All === */
+.section-heading {
+  margin: 0 0 0.8em;
+  color: var(--accent);
+}
+
+.see-all {
+  margin-top: 1em;
+  text-align: center;
+}
+.see-all a {
+  font-weight: bold;
+}
+
+/* === Pagination === */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1.5em;
+  padding-top: 1em;
+  border-top: 1px solid var(--border-light);
+}
+
+.pagination-info {
+  color: var(--fg-muted);
+}
+
 /* === 88x31 Buttons === */
 .buttons-88x31 {
   display: flex;

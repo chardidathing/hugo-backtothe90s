@@ -1,18 +1,20 @@
 {{ define "main" }}
   {{ with .Content }}<div class="list-content">{{ . }}</div>{{ end }}
   <div class="post-list">
-    {{ range .Pages.ByDate.Reverse }}
-      <article class="post-card">
-        <a href="{{ .RelPermalink }}">
-          <h2 class="post-card-title">{{ .Title }}</h2>
-        </a>
-        <div class="post-card-meta">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
-        </div>
-        {{ with .Description }}
-          <p class="post-card-desc">{{ . }}</p>
-        {{ end }}
-      </article>
+    {{ range .Paginator.Pages }}
+      {{ partial "post-card.html" . }}
     {{ end }}
   </div>
+  {{ $pag := .Paginator }}
+  {{ if gt $pag.TotalPages 1 }}
+    <nav class="pagination">
+      {{ if $pag.HasPrev }}
+        <a href="{{ $pag.Prev.URL }}">&laquo; Newer</a>
+      {{ end }}
+      <span class="pagination-info">Page {{ $pag.PageNumber }} of {{ $pag.TotalPages }}</span>
+      {{ if $pag.HasNext }}
+        <a href="{{ $pag.Next.URL }}">Older &raquo;</a>
+      {{ end }}
+    </nav>
+  {{ end }}
 {{ end }}

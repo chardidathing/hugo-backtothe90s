@@ -1,0 +1,16 @@
+<article class="post-card">
+  <a href="{{ .RelPermalink }}">
+    <h2 class="post-card-title">{{ .Title }}</h2>
+  </a>
+  <div class="post-card-meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    {{ with .Params.categories }}
+      {{ range . }}<span class="post-card-category">{{ . }}</span>{{ end }}
+    {{ end }}
+  </div>
+  {{ with .Description }}
+    <p class="post-card-desc">{{ . }}</p>
+  {{ else }}
+    <p class="post-card-desc">{{ .Summary | plainify | truncate 150 }}</p>
+  {{ end }}
+</article>

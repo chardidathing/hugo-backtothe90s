@@ -1,9 +1,9 @@
-name = 'hugo-web90s-diary'
+name = 'hugo-backtothe90s'
 license = 'MIT'
-licenselink = 'https://github.com/chardidathing/hugo-web90s-diary/blob/main/LICENSE'
-description = 'A retro 90s-style diary theme for Hugo'
+licenselink = 'https://github.com/chardidathing/hugo-backtothe90s/blob/main/LICENSE'
+description = 'A retro 90s-style blog theme for Hugo'
 
-homepage = 'https://github.com/chardidathing/hugo-web90s-diary'
+homepage = 'https://github.com/chardidathing/hugo-backtothe90s'
 demosite = 'https://chardidath.ing'
 
 tags = ['blog', 'diary', 'retro', '90s', 'personal']

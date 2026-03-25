@@ -1,5 +1,4 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
   {{ with .Content }}<div class="list-content">{{ . }}</div>{{ end }}
   <div class="post-list">
     {{ range .Pages.ByDate.Reverse }}

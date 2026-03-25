@@ -1,14 +1,14 @@
 name = 'hugo-web90s-diary'
 license = 'MIT'
-licenselink = 'https://github.com/mimoex/hugo-web90s-diary/blob/main/LICENSE'
+licenselink = 'https://github.com/chardidathing/hugo-web90s-diary/blob/main/LICENSE'
 description = 'A retro 90s-style diary theme for Hugo'
 
-homepage = 'https://github.com/mimoex/hugo-web90s-diary'
-demosite = 'https://owner.github.io/repo/'
+homepage = 'https://github.com/chardidathing/hugo-web90s-diary'
+demosite = 'https://chardidath.ing'
 
 tags = ['blog', 'diary', 'retro', '90s', 'personal']
 features = ['responsive', 'simple', 'retro-style']
 
 [author]
-  name = 'mimoex'
-  homepage = 'https://www.mimoex.net/'
+  name = 'chardidathing'
+  homepage = 'https://chardidath.ing/'

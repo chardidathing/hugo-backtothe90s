@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ .Site.LanguageCode | default "en" }}" data-theme="{{ .Site.Params.defaultTheme | default "98-light" }}">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
   <meta name="robots" content="{{ .Site.Params.robots | default "index, follow" }}">
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <script>
+    // Apply saved theme from cookie before paint to prevent FOUC
+    (function() {
+      var d = document.documentElement;
+      var fallback = d.getAttribute("data-theme") || "98-light";
+      var m = document.cookie.match(/(?:^|;\s*)theme=([^;]*)/);
+      d.setAttribute("data-theme", (m && m[1]) ? m[1] : fallback);
+    })();
+  </script>
   {{- $css := resources.Get "css/main.css" }}
   {{- if eq hugo.Environment "development" }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
@@ -16,27 +26,59 @@
     {{- end }}
   {{- end }}
 </head>
-<body>
-  <div class="container">
-    <header class="site-header">
+<body{{ with .Site.Params.bgImage }} style="background-image: url('{{ . }}'); background-color: var(--bg-page);{{ if eq ($.Site.Params.bgMode | default "tile") "tile" }} background-repeat: repeat;{{ else }} background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed;{{ end }}"{{ end }}>
+  {{ partial "flying-toasters.html" . }}
+  <div class="container window">
+    {{/* 98 themes: title bar header */}}
+    <div class="header-win title-bar">
+      <div class="title-bar-text">
+        <a href="/" class="site-title-link">{{ .Site.Title }}</a>
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+
+    {{/* Non-98 themes: standard header */}}
+    <header class="header-std site-header">
       <a href="/" class="site-title-link">
         <h1>{{ .Site.Title }}</h1>
       </a>
       {{ with .Site.Params.subtitle }}<p class="subtitle">{{ . }}</p>{{ end }}
+    </header>
+
+    <div class="container-body">
+      {{ with .Site.Params.subtitle }}<p class="subtitle subtitle-win">{{ . }}</p>{{ end }}
       <nav class="site-nav">
         {{ range .Site.Menus.main }}
           <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a>
         {{ end }}
       </nav>
-    </header>
 
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main>
 
-    <footer>
-      &copy; {{ now.Format "2006" }} {{ .Site.Title }}
-    </footer>
+      {{ partial "site-footer.html" . }}
+    </div>
   </div>
+  {{- $js := resources.Get "js/main.js" }}
+  {{- if eq hugo.Environment "development" }}
+    <script src="{{ $js.RelPermalink }}"></script>
+  {{- else }}
+    {{- with $js | minify | fingerprint }}
+      <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end }}
+  {{- end }}
+  {{- $oneko := resources.Get "js/oneko.js" }}
+  {{- if eq hugo.Environment "development" }}
+    <script src="{{ $oneko.RelPermalink }}" data-cat="/img/oneko.gif"></script>
+  {{- else }}
+    {{- with $oneko | minify | fingerprint }}
+      <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" data-cat="/img/oneko.gif"></script>
+    {{- end }}
+  {{- end }}
 </body>
 </html>

@@ -106,6 +106,32 @@
   --font-family: "Pixelated MS Sans Serif", "Microsoft Sans Serif", Arial, sans-serif;
 }
 
+/* --- Charliezone --- */
+[data-theme="98-charliezone"] {
+  --bg-page: #1e1520;
+  --bg: #2e2535;
+  --fg: #e8d8ee;
+  --fg-muted: #a090b0;
+  --accent: #d4a0c0;
+  --accent-hover: #e8b8d4;
+  --border: #221a28;
+  --border-light: #4a3a55;
+  --shadow: #000000;
+  --header-bg: linear-gradient(to right, #6a4070, #9868a8);
+  --header-fg: #f0e0f5;
+  --card-bg: #382840;
+  --code-fg: #e8d8ee;
+  --code-bg: #322838;
+  --code-border: #4a3a55;
+  --code-block-bg: #181020;
+  --code-block-fg: #d0c0e0;
+  --tag-bg: #4a3858;
+  --tag-fg: #d4a0c0;
+  --nav-link: #d4a0c0;
+  --category-fg: #a090b0;
+  --font-family: "Pixelated MS Sans Serif", "Microsoft Sans Serif", Arial, sans-serif;
+}
+
 /* === Reset & Base === */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -145,8 +171,9 @@ a:hover {
 }
 
 /* 98 themes: let 98.css .window handle it */
-/* 98 dark: override 98.css window colors */
-[data-theme="98-dark"] .container {
+/* 98 dark themes: override 98.css window colors */
+[data-theme="98-dark"] .container,
+[data-theme="98-charliezone"] .container {
   background: var(--bg);
   padding: 3px;
   box-shadow:
@@ -224,7 +251,8 @@ a:hover {
   color: var(--header-fg);
 }
 
-[data-theme="98-dark"] .title-bar {
+[data-theme="98-dark"] .title-bar,
+[data-theme="98-charliezone"] .title-bar {
   background: var(--header-bg);
 }
 
@@ -267,7 +295,8 @@ a:hover {
     inset -2px -2px grey,
     inset 2px 2px #dfdfdf;
 }
-[data-theme="98-dark"] .site-nav a {
+[data-theme="98-dark"] .site-nav a,
+[data-theme="98-charliezone"] .site-nav a {
   box-shadow:
     inset -1px -1px #000,
     inset 1px 1px #555,
@@ -285,7 +314,9 @@ a:hover {
     inset 2px 2px grey;
 }
 [data-theme="98-dark"] .site-nav a:hover,
-[data-theme="98-dark"] .site-nav a.active {
+[data-theme="98-dark"] .site-nav a.active,
+[data-theme="98-charliezone"] .site-nav a:hover,
+[data-theme="98-charliezone"] .site-nav a.active {
   box-shadow:
     inset -1px -1px #555,
     inset 1px 1px #000,
@@ -653,7 +684,8 @@ footer {
     inset 2px 2px grey;
   border: none;
 }
-[data-theme="98-dark"] .post-card {
+[data-theme="98-dark"] .post-card,
+[data-theme="98-charliezone"] .post-card {
   box-shadow:
     inset -1px -1px #555,
     inset 1px 1px #000,
@@ -672,7 +704,9 @@ footer {
   border: none;
 }
 [data-theme="98-dark"] pre,
-[data-theme="98-dark"] .highlight {
+[data-theme="98-dark"] .highlight,
+[data-theme="98-charliezone"] pre,
+[data-theme="98-charliezone"] .highlight {
   box-shadow:
     inset -1px -1px #555,
     inset 1px 1px #000,
@@ -691,7 +725,9 @@ footer {
   border: none;
 }
 [data-theme="98-dark"] .post-content img,
-[data-theme="98-dark"] figure img {
+[data-theme="98-dark"] figure img,
+[data-theme="98-charliezone"] .post-content img,
+[data-theme="98-charliezone"] figure img {
   box-shadow:
     inset -1px -1px #555,
     inset 1px 1px #000,
@@ -709,7 +745,8 @@ footer {
     inset -2px -2px grey,
     inset 2px 2px #dfdfdf;
 }
-[data-theme="98-dark"] .tag {
+[data-theme="98-dark"] .tag,
+[data-theme="98-charliezone"] .tag {
   box-shadow:
     inset -1px -1px #000,
     inset 1px 1px #555,
@@ -729,7 +766,8 @@ footer {
   border-top: none;
   box-shadow: inset 0 1px #808080, inset 0 2px #fff;
 }
-[data-theme="98-dark"] footer {
+[data-theme="98-dark"] footer,
+[data-theme="98-charliezone"] footer {
   box-shadow: inset 0 1px #222, inset 0 2px #444;
 }
 
@@ -742,7 +780,8 @@ footer {
     inset -2px -2px #dfdfdf,
     inset 2px 2px grey;
 }
-[data-theme="98-dark"] blockquote {
+[data-theme="98-dark"] blockquote,
+[data-theme="98-charliezone"] blockquote {
   box-shadow:
     inset -1px -1px #555,
     inset 1px 1px #000,
@@ -759,7 +798,8 @@ footer {
     inset -2px -2px #dfdfdf,
     inset 2px 2px grey;
 }
-[data-theme="98-dark"] iframe {
+[data-theme="98-dark"] iframe,
+[data-theme="98-charliezone"] iframe {
   box-shadow:
     inset -1px -1px #555,
     inset 1px 1px #000,
@@ -903,7 +943,8 @@ footer {
       inset -2px -2px #dfdfdf,
       inset 2px 2px grey;
   }
-  [data-theme="98-dark"] .post-card {
+  [data-theme="98-dark"] .post-card,
+  [data-theme="98-charliezone"] .post-card {
     box-shadow:
       inset -1px -1px #555,
       inset 1px 1px #000,

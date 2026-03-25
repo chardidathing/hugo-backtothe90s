@@ -25,8 +25,23 @@
       <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
     {{- end }}
   {{- end }}
+  {{- with .Site.Params.backgrounds }}
+  <style>
+    {{- range $theme, $bg := . }}
+    [data-theme="{{ $theme }}"] body {
+      background-image: url('{{ $bg.image }}');
+      background-color: var(--bg-page);
+      {{ if eq ($bg.mode | default "tile") "tile" -}}
+      background-repeat: repeat;
+      {{- else -}}
+      background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed;
+      {{- end }}
+    }
+    {{- end }}
+  </style>
+  {{- end }}
 </head>
-<body{{ with .Site.Params.bgImage }} style="background-image: url('{{ . }}'); background-color: var(--bg-page);{{ if eq ($.Site.Params.bgMode | default "tile") "tile" }} background-repeat: repeat;{{ else }} background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed;{{ end }}"{{ end }}>
+<body>
   {{ partial "flying-toasters.html" . }}
   <div class="container window">
     {{/* 98 themes: title bar header */}}

@@ -67,22 +67,25 @@ theme = "hugo-backtothe90s"
   subtitle = "a cool subtitle"
 
   # Default theme for new visitors
-  # Options: "98-light", "98-dark", "sakura-light", "sakura-dark"
+  # Options: "98-light", "98-dark", "98-charliezone", "sakura-light", "sakura-dark"
   defaultTheme = "98-light"
-
-  # Background image (optional). Put images in static/ and reference from root
-  # bgImage = "/img/bg_pattern.gif"
-
-  # How the background image is displayed
-  # "tile" = repeats, good for patterns/pixel art/svgs
-  # "cover" = single image, fills the screen, fixed on scroll
-  # bgMode = "tile"
 
   # Name shown in the footer copyright. Falls back to site title if not set
   # copyright = "your name"
 
   # Robots meta tag value
   # robots = "index, follow"
+
+  # Per-theme background images (optional)
+  # Each theme can have its own background, or none at all
+  # "tile" = repeats, good for patterns/pixel art/svgs
+  # "cover" = single image, fills the screen, fixed on scroll
+  # [params.backgrounds.98-charliezone]
+  #   image = "/img/bg.jpg"
+  #   mode = "tile"
+  # [params.backgrounds.98-dark]
+  #   image = "/img/stars.gif"
+  #   mode = "tile"
 ```
 
 ## Themes
@@ -97,6 +100,7 @@ You set the default with `defaultTheme`:
 |-------|-------------------|
 | `98-light` | Windows 98 - teal desktop, silver windows, navy title bar |
 | `98-dark` | Dark Windows 98 - with flying toasters in the background |
+| `98-charliezone` | Pastel pink/mauve Windows 98 |
 | `sakura-light` | Pink :3, light background |
 | `sakura-dark` | Pink :3, dark background |
 
@@ -104,19 +108,19 @@ The 98 themes use [98.css](https://jdan.github.io/98.css/) for authentic window 
 
 ## Background image
 
-You can put a background image behind the page. Drop your image in `static/` and add these to `[params]`:
+Each theme can have its own background image. Drop your images in `static/` and add a `[params.backgrounds.<theme-name>]` block:
 
 ```toml
-bgImage = "/img/stars.gif"
-bgMode = "tile"    # repeats the image, good for patterns
+[params.backgrounds.98-charliezone]
+  image = "/img/bg.jpg"
+  mode = "tile"    # repeats the image, good for patterns
+
+[params.backgrounds.98-dark]
+  image = "/img/mountains.jpg"
+  mode = "cover"   # single image, fills the screen
 ```
 
-```toml
-bgImage = "/img/mountains.jpg"
-bgMode = "cover"   # single image, fills the screen
-```
-
-If you don't set `bgImage`, each theme just uses a solid colour.
+Themes without a background entry just use their solid colour.
 
 ## Posts
 

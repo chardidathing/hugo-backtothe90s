@@ -1,4 +1,17 @@
 {{ define "main" }}
+  {{ with .Site.Params.intro }}
+  <div class="intro">
+    {{ with .greeting }}<h2 class="intro-greeting">{{ . }}</h2>{{ end }}
+    {{ with .message }}<p class="intro-message">{{ . }}</p>{{ end }}
+    {{ with .links }}
+    <div class="intro-links">
+      {{ range . }}
+        <a href="{{ .url }}"{{ if .url | findRE "^https?://" }} target="_blank" rel="noopener"{{ end }}>{{ .name }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
   <h2 class="section-heading">Latest posts</h2>
   <div class="post-list">
     {{ $posts := where .Site.RegularPages "Section" "posts" }}

@@ -76,6 +76,17 @@ theme = "hugo-backtothe90s"
   # Robots meta tag value
   # robots = "index, follow"
 
+  # Homepage intro (optional, all fields optional)
+  # [params.intro]
+  #   greeting = "hiii :3"
+  #   message = "welcome to my blog"
+  #   [[params.intro.links]]
+  #     name = "GitHub"
+  #     url = "https://github.com/you"
+  #   [[params.intro.links]]
+  #     name = "Ko-fi"
+  #     url = "https://ko-fi.com/you"
+
   # Per-theme background images (optional)
   # Each theme can have its own background, or none at all
   # "tile" = repeats, good for patterns/pixel art/svgs

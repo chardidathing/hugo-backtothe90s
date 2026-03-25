@@ -1,0 +1,13 @@
+{{- $src := .Destination -}}
+{{- $alt := .Text -}}
+{{- $title := .Title -}}
+{{- /* Resolve page-relative images from page bundles */ -}}
+{{- with .Page.Resources.GetMatch $src -}}
+  {{- $src = .RelPermalink -}}
+{{- end -}}
+<figure>
+  <img src="{{ $src }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy">
+  {{- with $title }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
+</figure>

@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="{{ .Site.LanguageCode | default "en" }}">
 <head>
   <meta charset="utf-8">
-  <title>{{ .Site.Title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta name="robots" content="{{ .Site.Params.robots }}">
-{{ $css := resources.Get "css/main.scss" | toCSS | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  <meta name="color-scheme" content="light dark">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+  <meta name="robots" content="{{ .Site.Params.robots | default "index, follow" }}">
+  {{- $css := resources.Get "css/main.css" }}
+  {{- if eq hugo.Environment "development" }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{- else }}
+    {{- with $css | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{- end }}
+  {{- end }}
 </head>
 <body>
   <div class="container">
-    <div class="site-header">
-      <h1>{{ .Site.Title }}</h1>
-      <h2>{{ .Site.Params.subtitle }}</h2>
-    </div>
+    <header class="site-header">
+      <a href="/" class="site-title-link">
+        <h1>{{ .Site.Title }}</h1>
+      </a>
+      {{ with .Site.Params.subtitle }}<p class="subtitle">{{ . }}</p>{{ end }}
+      <nav class="site-nav">
+        {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a>
+        {{ end }}
+      </nav>
+    </header>
 
-    {{ block "main" . }}{{ end }}
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
 
     <footer>
-      © {{ now.Format "2006" }} {{ .Site.Title }}
+      &copy; {{ now.Format "2006" }} {{ .Site.Title }}
     </footer>
   </div>
 </body>
